@@ -2,6 +2,8 @@
 
 It is 2024. Perl has limited thread safe operators. Everything else is the same as in 2021.
 
+DWIM and TIMTOWDY are still very much alive.
+
 =head1 Perl 5 + additional capabilities
 
 C<map_r($num_threads)> - a threaded block that can be inserted into a traditional perl program, spawns C<$num_threads>)
