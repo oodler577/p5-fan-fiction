@@ -4,7 +4,7 @@ It is 2024. Perl has limited thread safe operators. Everything else is the same 
 
 DWIM and TIMTOWDY are still very much alive.
 
-=head1 Perl 5 + additional capabilities
+=head1 Perl 5 + additional capabilities for SMP (shared memory programming and/or symmetric multi-process architectures (ccnuma, e.g.))
 
 C<map_r($num_threads)> - a threaded block that can be inserted into a traditional perl program, spawns C<$num_threads>)
 
@@ -68,3 +68,15 @@ See,
 C<01/01-hello.pl>
 
 C<01/02-bakery.pl>
+
+=head1 RELATED LINKS
+
+L<https://github.com/marioroy/Chudnovsky-Pi>
+
+L<https://github.com/ingydotnet/inline-c-pm/issues/47>
+
+L<https://gcc.gnu.org/projects/gomp/>
+
+L<https://www.brainkart.com/article/Shared-Memory-Programming-with-Pthreads_9338/>
+
+L<https://www.openmp.org/spec-html/5.1/openmp.html>
