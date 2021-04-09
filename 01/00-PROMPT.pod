@@ -31,7 +31,7 @@ it in your contribution.
 
 =head2 Reference counting
 
-This is a valid concern some may not be able to suspect in their disbelief during this excercise. I think it's consistent with
+This is a valid concern some may not be able to suspend their disbelief during this excercise. I think it's consistent with
 the model above to assume that there is some kind of new "thread scope"; this should preserve the notion that only one "line of execution" -
 be it the main serial parent process (shared within a threaded scope) or variables declared in a singlular thread scope (thread-private);
 
