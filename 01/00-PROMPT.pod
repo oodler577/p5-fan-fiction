@@ -4,27 +4,28 @@ It is 2024. Perl has limited thread safe operators. Everything else is the same 
 
 =head1 Perl 5 + additional capabilities
 
-map_r($num_threads) - a threaded block that can be inserted into a traditional perl program, spawns C<$num_threads>)
+C<map_r($num_threads)> - a threaded block that can be inserted into a traditional perl program, spawns C<$num_threads>)
 
-atomic              - like 'state' but provides a non-reference scalar value that can updated atomically in an SMP thread environment
+C<atomic>              - like C<state> but provides a non-reference scalar value that can updated atomically in an SMP thread environment
 
-my_r                - like 'my', but:
+C<my_r>                - like C<my>, but:
 
   * arrays are 'thread safe' meaning they can be updated concurrently by multiple threads
 
   * hashes, the same as arrays
 
-  * scalars can only be references to anonymous thread safe hashes or arrays (otherwise, use 'atomic')
+  * scalars can only be references to anonymous thread safe hashes or arrays (otherwise, use C<atomic>)
 
-local               - inside of a map_r, treated as a private thread variable
+C<local>               - inside of a map_r, treated as a private thread variable
 
-sub_r               - 'thread safe' atomic subroutine, (critical section; like 'atomic' but for executed blocks)
+C<sub_r>               - 'thread safe' atomic subroutine, (critical section; like 'atomic' but for executed blocks)
 
-*_r                 - current perl5 supported keywords, functions, etc maybe used with a '_r' to indicated
+C<*_r>                 - current perl5 supported keywords, functions, etc maybe used with a '_r' to indicated
                       it is 'thread safe'; in some cases, the meaning should be clear (e.g., printf_r); in
                       others, not so much (e.g., join_r, split_r, etc). You decide how that arc goes.
 
-Be creative, this code will likely never run anywhere except in our heads. 
+Be creative, this code will likely never run anywhere except in our heads. Feel free to change the rules (go nuts), just note
+it in your contribution.
 
 =head1 General Rules
 
@@ -32,11 +33,11 @@ Be creative, this code will likely never run anywhere except in our heads.
 
 =item 0. Added identify information in comments to show your grand kids (or don't)
 
-=item 1. Write perl as you normally do + language additions above
+=item 1. Write perl as you normally do + language additions above (or your variation)
 
 =item 2. Limit examples to to short, easy to understand (50-100 lines) - don't reimplement DBI
 
-=item 3. Under __END__, show expected output that you think or expect would happen; otherwise describe what's going in words
+=item 3. Under C<__END__>, show expected output that you think or expect would happen; otherwise describe what's going in words
 
 =item 4. Please keep it clean (it's not *that* kind of fanfic)
 
@@ -46,6 +47,6 @@ Be creative, this code will likely never run anywhere except in our heads.
 
 See,
 
-C<01-hello.pl>
+C<01/01-hello.pl>
 
-C<02-bakery.pl>
+C<01/02-bakery.pl>
