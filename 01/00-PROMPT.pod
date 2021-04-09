@@ -29,6 +29,22 @@ C<*_r>                 - current perl5 supported keywords, functions, etc maybe 
 Be creative, this code will likely never run anywhere except in our heads. Feel free to change the rules (go nuts), just note
 it in your contribution.
 
+=head2 Reference counting
+
+This is a valid concern some may not be able to suspect in their disbelief during this excercise. I think it's consistent with
+the model above to assume that there is some kind of new "thread scope"; this should preserve the notion that only one "line of execution" -
+be it the main serial parent process (shared within a threaded scope) or variables declared in a singlular thread scope (thread-private);
+
+See C<01/03-variable-scoping.pl> for an example.
+
+=over 4
+
+=item any variables declared in a "thread scope" are private to that thread (i.e., a thread can declare variables with C<my> which are private and C<local> behaves as it does now; maybe in a 'copy on write' sort of way)
+
+=item threads can only share only variables declared outside of the thread scope; threads can't declare "shared" variables inside of thread scope
+
+=back
+
 =head1 General Rules
 
 =over 4
