@@ -1,11 +1,14 @@
 Perl5 Fan Fiction
 
-Like 'perl weekly challenge', but the code is totally fictional.
+Like 'perl weekly challenge', but the code is totally fictional. This
+may not go past 01. Guess we'll see.
 
 Challenge:
 
 * 01 - Perl has limited SMP threading support
 
-Note:
-
-This may not go past 01. Guess we'll see.
+1. cd  ./01
+2. perldoc 00-PROMPT.pod
+3. write code
+4. issue PR
+5. get some ice cream, you earned it

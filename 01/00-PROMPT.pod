@@ -30,11 +30,15 @@ Be creative, this code will likely never run anywhere except in our heads.
 
 =over 4
 
+=item 0. Added identify information in comments to show your grand kids (or don't)
+
 =item 1. Write perl as you normally do + language additions above
 
 =item 2. Limit examples to to short, easy to understand (50-100 lines) - don't reimplement DBI
 
 =item 3. Under __END__, show expected output that you think or expect would happen; otherwise describe what's going in words
+
+=item 4. Please keep it clean (it's not *that* kind of fanfic)
 
 =back
 
