@@ -4,7 +4,7 @@ It is 2024. Perl has limited thread safe operators. Everything else is the same 
 
 DWIM and TIMTOWDY are still very much alive.
 
-=head1 Perl 5 + additional capabilities for SMP (shared memory programming and/or symmetric multi-process architectures (ccnuma, e.g.))
+=head1 Perl 5 + additional capabilities for SMP (shared memory programming and/or symmetric multi-process architectures (numa, e.g.))
 
 C<map_r($num_threads)> - a threaded block that can be inserted into a traditional perl program, spawns C<$num_threads>)
 
@@ -70,6 +70,8 @@ C<01/01-hello.pl>
 C<01/02-bakery.pl>
 
 =head1 RELATED LINKS
+
+L<https://linux.die.net/man/8/numactl>
 
 L<https://github.com/marioroy/Chudnovsky-Pi>
 
