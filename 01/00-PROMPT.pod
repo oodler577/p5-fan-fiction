@@ -16,13 +16,13 @@ C<my_r>                - like C<my>, but:
 
   * scalars can only be references to anonymous thread safe hashes or arrays (otherwise, use C<atomic>)
 
-C<local>               - inside of a map_r, treated as a private thread variable
+C<local>               - inside of a C<map_r>, treated as a private thread variable
 
-C<sub_r>               - 'thread safe' atomic subroutine, (critical section; like 'atomic' but for executed blocks)
+C<sub_r>               - 'thread safe' atomic subroutine, (critical section; like C<atomic> but for executed blocks)
 
-C<*_r>                 - current perl5 supported keywords, functions, etc maybe used with a '_r' to indicated
-                      it is 'thread safe'; in some cases, the meaning should be clear (e.g., printf_r); in
-                      others, not so much (e.g., join_r, split_r, etc). You decide how that arc goes.
+C<*_r>                 - current perl5 supported keywords, functions, etc maybe used with a C<_r> to indicated
+                      it is 'thread safe'; in some cases, the meaning should be clear (e.g., C<printf_r>); in
+                      others, not so much (e.g., C<join_r>, C<split_r>, etc). You decide how that arc goes.
 
 Be creative, this code will likely never run anywhere except in our heads. Feel free to change the rules (go nuts), just note
 it in your contribution.
