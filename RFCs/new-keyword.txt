@@ -151,12 +151,14 @@ in the same way as it would in traditional Perl OOP,
 As I continued to stare at the examples on the Object::Pad POD, it
 occurred to me that:
 
-* "class", while probably familiar to Perl programmers, probably
+* "class", while probably familiar to Perl programmers, also likely
   invokes negative thoughts about things like Java, etc
-* "class" is declarative, it is only used when describing the object
+* "class" is declarative, it is only used when describing the object;
+  however it is then never used any time the calling code wants to create
+  a new object; which illustrates the "declarative" style OOP in Object::Pad
+  versus the "imperative" nature of the OOP in traditional Perl OOP (this
+  is a big deal for a lot of users)
 * "new", which is used as idiomatic Perl, is not explicitly declared;
-  however it is then used any time the calling code wants to create
-  a new object
 * "class" is also 2 letters longer than "new"
 * it is the inversion of "DWIM"
 
