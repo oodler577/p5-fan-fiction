@@ -1,6 +1,97 @@
 
 A "new" keyword in Perl.
 
+IV. Summary
+
+This investigation of replacing "class" with "new" was interesting. And
+while I do not think it is perfect, it does highlight a very important
+aspect of getting this "modern" Perl OOP adopted by traditional programmers>
+
+1. automatic constructor construction is confusing; We (and by that, I mean
+"I") very much like there being an explicit "new" subroutine. This allows
+me to start at a reliable place in code (even my own) that I have to figure
+out. Without a "sub new" I am totally lost, and this is after some non-trivial
+effort to like and use modern Perl OOP.
+
+2. the "80%" solution is to replace the "class" keyword with a formal keyword
+that is familiar and idiomatically meaningful, "new".
+
+Is there another solution? Other than of course, me getting even better at
+avoiding modern Perl OOP?
+
+III. Not a Perfect Idea 
+
+I was hoping that by writing this up, it would occur to me why this is
+a bad idea. The one issue I do see is that a class declaration using a
+"new" keyword looks like the "discouraged" old form of indirect syntax
+that was virtually outlawed by fiat, but is not disallowed by the inter-
+preter:
+
+	my $foo = new My::Object;
+
+It is hard to tell the difference between that and something like this
+example,
+
+	use Object::Pad 0.16;
+	 
+	package My::Classname 1.23;
+	class My::Classname;
+
+Which, using the "new" keyword looks like this,
+
+	use Object::Pad 0.16;
+	 
+	package My::Classname 1.23;
+	new My::Classname;
+
+II. A new "new" Keyword
+
+The idea I had was the formalization of the familiar Perl idiom in
+traditional Perl OOP. The "new" subroutine, an example of
+
+	use v5.26;
+	use Object::Pad;
+	 
+	new Point {
+	   has $x :param = 0;
+	   has $y :param = 0;
+	 
+	   method move ($dX, $dY) {
+	      $x += $dX;
+	      $y += $dY;
+	   }
+	 
+	   method describe () {
+	      print "A point at ($x, $y)\n";
+	   }
+	}
+	 
+	Point->new(x => 5, y => 10)->describe;
+
+And by modifying another example on Object::Pad's POD, we get this which
+I think shows that the approach makes code more familiar and more read-
+able as things start getting more mixed - which it will inevitably get:
+
+	package ClassicPerlBaseClass {
+	   sub new {
+	      my $self = bless {}, shift;
+	      say "Value seen by superconstructor is ", $self->get_value;
+	      return $self;
+	   }
+	   sub get_value { return "A" }
+	}
+	 
+	new DerivedClass :isa(ClassicPerlBaseClass) {
+	   has $_value = "B";
+	   BUILD {
+	      $_value = "C";
+	   }
+	   method get_value { return $_value }
+	}
+	 
+	my $obj = DerivedClass->new;
+	say "Value seen by user is ", $obj->get_value;
+
 I. Background
 
 I was looking at the examples for Object::Pad, which
@@ -82,95 +173,5 @@ Perl programmers, it must do better. There must be an idiomatic or
 semantic bridge so that old farts like myself can start with some mom-
 entum. 
 
-II. A new "new" Keyword
-
-The idea I had was the formalization of the familiar Perl idiom in
-traditional Perl OOP. The "new" subroutine, an example of
-
-	use v5.26;
-	use Object::Pad;
-	 
-	new Point {
-	   has $x :param = 0;
-	   has $y :param = 0;
-	 
-	   method move ($dX, $dY) {
-	      $x += $dX;
-	      $y += $dY;
-	   }
-	 
-	   method describe () {
-	      print "A point at ($x, $y)\n";
-	   }
-	}
-	 
-	Point->new(x => 5, y => 10)->describe;
-
-And by modifying another example on Object::Pad's POD, we get this which
-I think shows that the approach makes code more familiar and more read-
-able as things start getting more mixed - which it will inevitably get:
-
-	package ClassicPerlBaseClass {
-	   sub new {
-	      my $self = bless {}, shift;
-	      say "Value seen by superconstructor is ", $self->get_value;
-	      return $self;
-	   }
-	   sub get_value { return "A" }
-	}
-	 
-	new DerivedClass :isa(ClassicPerlBaseClass) {
-	   has $_value = "B";
-	   BUILD {
-	      $_value = "C";
-	   }
-	   method get_value { return $_value }
-	}
-	 
-	my $obj = DerivedClass->new;
-	say "Value seen by user is ", $obj->get_value;
-
-III. Not a Perfect Idea 
-
-I was hoping that by writing this up, it would occur to me why this is
-a bad idea. The one issue I do see is that a class declaration using a
-"new" keyword looks like the "discouraged" old form of indirect syntax
-that was virtually outlawed by fiat, but is not disallowed by the inter-
-preter:
-
-	my $foo = new My::Object;
-
-It is hard to tell the difference between that and something like this
-example,
-
-	use Object::Pad 0.16;
-	 
-	package My::Classname 1.23;
-	class My::Classname;
-
-Which, using the "new" keyword looks like this,
-
-	use Object::Pad 0.16;
-	 
-	package My::Classname 1.23;
-	new My::Classname;
-
-IV. Summary
-
-This investigation of replacing "class" with "new" was interesting. And
-while I do not think it is perfect, it does highlight a very important
-aspect of getting this "modern" Perl OOP adopted by traditional programmers>
-
-1. automatic constructor construction is confusing; We (and by that, I mean
-"I") very much like there being an explicit "new" subroutine. This allows
-me to start at a reliable place in code (even my own) that I have to figure
-out. Without a "sub new" I am totally lost, and this is after some non-trivial
-effort to like and use modern Perl OOP.
-
-2. the "80%" solution is to replace the "class" keyword with a formal keyword
-that is familiar and idiomatically meaningful, "new".
-
-Is there another solution? Other than of course, me getting even better at
-avoiding modern Perl OOP?
 
 Cheers,...
