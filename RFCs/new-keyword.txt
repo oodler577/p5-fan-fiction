@@ -5,13 +5,15 @@ IV. Summary
 
 This investigation of replacing "class" with "new" was interesting. And
 while I do not think it is perfect, it does highlight a very important
-aspect of getting this "modern" Perl OOP adopted by traditional programmers>
+aspect of getting this "modern" Perl OOP adopted by traditional programmers.
 
 1. automatic constructor construction is confusing; We (and by that, I mean
 "I") very much like there being an explicit "new" subroutine. This allows
 me to start at a reliable place in code (even my own) that I have to figure
 out. Without a "sub new" I am totally lost, and this is after some non-trivial
 effort to like and use modern Perl OOP.
+
+Meme idea: Old Lady at Wendy's saying, "where's the C<sub new>??"
 
 2. the "80%" solution is to replace the "class" keyword with a formal keyword
 that is familiar and idiomatically meaningful, "new".
@@ -172,6 +174,5 @@ If the new generation of POOP is to offer a bridge or attract traditional
 Perl programmers, it must do better. There must be an idiomatic or
 semantic bridge so that old farts like myself can start with some mom-
 entum. 
-
 
 Cheers,...
